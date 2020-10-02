@@ -12,6 +12,12 @@ h2 {
   text-align: center;
   color: #444;
 }
+a {
+  color: inherit;
+}
+label {
+  font-weight: normal;
+}
 div.content {
   border-radius: 12px;
   padding: 20px;
@@ -24,6 +30,10 @@ div.content {
   color: #048;
   font-weight: 540;
   font-size: 14px;
+}
+.small {
+  font-weight: normal;
+  font-size: 12px;
 }
 .inputs {
   margin: 4px 0;

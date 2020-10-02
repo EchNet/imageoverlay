@@ -33,9 +33,9 @@
       <img class="preview" src="" style="display: none"/>
     </div>
     <div class="prompt">
-      Upload a new template image
+      Upload an image
     </div>
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
       <div class="inputs">
         <input name="file" type="file" accept="image/jpeg"
             onchange="handleFileInputChange(event)"/>
@@ -44,6 +44,9 @@
         <button id="uploadSubmitButton" type="submit" disabled="disabled">Upload</button>
       </div>
     </form>
+    <div class="small">
+      Note: files must be named Template.jpg.  A file with the same name as an existing template <i>replaces</i> the former template image file.
+    </div>
   </div>
 </body>
 <script src="js/jscolor.js"></script>
