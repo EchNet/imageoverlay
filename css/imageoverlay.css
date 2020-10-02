@@ -12,9 +12,6 @@ h2 {
   text-align: center;
   color: #444;
 }
-a {
-  color: inherit;
-}
 label {
   font-weight: normal;
 }
@@ -25,6 +22,9 @@ div.content {
   max-width: 640px;
   margin: 20px auto;
   background-color: white;
+}
+div.formField {
+  margin: 10px 0;
 }
 .prompt {
   color: #048;

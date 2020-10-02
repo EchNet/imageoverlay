@@ -5,8 +5,7 @@ function handleImageSelection(event) {
   var placeholder = document.querySelector(".placeholder");
   if (selectionValue) {
     editButton.removeAttribute("disabled");
-    editButton.parentElement.setAttribute("href",
-      "templateeditor.php?image=" + selectionValue + ".jpg");
+    editButton.parentElement.setAttribute("href", "tsettings.php/" + selectionValue);
     editButton.title = "Click to open the template editor";
     image.setAttribute("src", "images/" + selectionValue + ".jpg")
     image.style.display = "block";

@@ -1,13 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>Image Overlay - Template Manager</title>
+  <title>Image Overlay - Templates</title>
   <link rel='stylesheet' id='bootstrap-css'  href='https://diuineuubyags.cloudfront.net/wp-content/themes/leadengine/core/assets/css/bootstrap.min.css?ver=5.3.2' type='text/css' media='all' />
   <link rel='stylesheet' href='css/imageoverlay.css' type='text/css' media='all' />
 </head>
 <body>
   <div class="content">
-    <h2><i>Image Overlay</i> - Template Manager</h2>
+    <h2><i>Image Overlay</i> - Templates</h2>
     <div class="prompt">Select from available templates</div>
     <div>
       <select class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
