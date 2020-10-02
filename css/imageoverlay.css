@@ -25,7 +25,10 @@ div.content {
   font-weight: 540;
   font-size: 14px;
 }
-button, select {
+.inputs {
+  margin: 4px 0;
+}
+button, input, select {
   font-size: 16px;
 }
 select {
@@ -35,10 +38,13 @@ select {
 }
 .imageContainer {
   height: 240px;
-  background: #ccc;
-  border: solid 1px #bbb;
+  background: #eee;
+  border: solid 1px #ddd;
   margin: 20px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 img.preview {
   height: 240px;

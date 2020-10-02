@@ -1,18 +1,37 @@
 function handleImageSelection(event) {
-  var selectionValue = event.target.value;
+  var selectionValue = event && event.target.value;
   var editButton = document.querySelector("#editTemplateSettings");
+  var image = document.querySelector("img.preview");
+  var placeholder = document.querySelector(".placeholder");
   if (selectionValue) {
     editButton.removeAttribute("disabled");
+    editButton.parentElement.setAttribute("href",
+      "templateeditor.php?image=" + selectionValue + ".jpg");
+    editButton.title = "Click to open the template editor";
+    image.setAttribute("src", "images/" + selectionValue + ".jpg")
+    image.style.display = "block";
+    placeholder.style.display = "none";
   }
   else {
     editButton.setAttribute("disabled", "disabled");
-  }
-  var image = document.querySelector("img.preview");
-  if (selectionValue) {
-    image.setAttribute("src", "images/" + selectionValue + ".jpg")
-    image.style.visibility = "visible";
-  }
-  else {
-    image.style.visibility = "hidden";
+    editButton.title = "Select a template first";
+    image.style.display = "none";
+    placeholder.style.display = "block";
   }
 }
+
+function handleFileInputChange(event) {
+  var fileValue = event && event.target.value;
+  var submitButton = document.querySelector("#uploadSubmitButton")
+  if (fileValue) {
+    submitButton.removeAttribute("disabled");
+    submitButton.title = "Click to upload file";
+  }
+  else {
+    submitButton.setAttribute("disabled", "disabled");
+    submitButton.title = "Select a file to upload first";
+  }
+}
+
+handleImageSelection();
+handleFileInputChange();
