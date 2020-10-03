@@ -23,8 +23,16 @@ div.content {
   margin: 20px auto;
   background-color: white;
 }
-div.formField {
-  margin: 10px 0;
+div.flexwrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.formField {
+  margin-bottom: 5px;
+}
+div.formField label {
+  margin-bottom: 0;
 }
 .prompt {
   color: #048;
