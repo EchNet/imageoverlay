@@ -40,7 +40,7 @@
     }
   }
 
-  # Load PHP settings files: default and specific.
+  # Load PHP settings file.
   if (file_exists($settings_file_path)) {
     include $settings_file_path;
   }
@@ -54,7 +54,9 @@
   <div class="content">
     <h2><i>Image Overlay</i> - <a href="..">Templates</a> - <?php echo $template_name ?></h2>
     <div class="imageContainer">
-      <img class="preview" src="../script3.php?image=<?php echo $template_name ?>.jpg" />
+      <a href="../image.php/<?php echo $template_name ?>?t1=0123456789&t2=XXXX&t3=YYYY" target="fullsize">
+        <img class="preview" src="../image.php/<?php echo $template_name ?>?t1=0123456789&t2=XXXX&t3=YYYY" />
+      </a>
     </div>
     <form method="POST">
       <div class="flexwrap">
