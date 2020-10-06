@@ -37,54 +37,31 @@ $base_image_path = $IMAGES_DIR . $template_name . ".jpg";
 list($image_width, $image_height, $image_type) = getimagesize($base_image_path);
 switch($image_type) {
   case "1": # GIF
-    $im = imagecreatefromgif($base_image_path);
+    $image_p = imagecreatefromgif($base_image_path);
     break;
   case "2": # JPG
-    $im = imagecreatefromjpeg($base_image_path);
+    $image_p = imagecreatefromjpeg($base_image_path);
     break;
   case "3": # PNG
-    $im = imagecreatefrompng($base_image_path);
+    $image_p = imagecreatefrompng($base_image_path);
     break;
   default:
     errorIMG("Bad image type");
 }
 
-# What is the overlay text?
-$text1 = '';
-$text2 = '';
-$text3 = '';
-if (isset($_GET["t1"])) $text1 = $_GET["t1"];
-if (isset($_GET["t2"])) $text2 = $_GET["t2"];
-if (isset($_GET["t3"])) $text3 = $_GET["t3"];
-
-$text1 != '' and textoverlay(1, $im, $image_width, $image_height);
-$text2 != '' and textoverlay(2, $im, $image_width, $image_height);
-$text3 != '' and textoverlay(3, $im, $image_width, $image_height);
-
-# Respond with a JPEG file, regardless of the base image format.
-$jpegcompress = 75; # (range of 50 - 95 recommended)
-header("Content-type: image/jpeg");
-imagejpeg($im, NULL, $jpegcompress);
-imagedestroy($im);
-exit;
-
-############# Begin Functions #################
-
-function textoverlay($N, $image_p, $image_width, $image_height) {
-  global $FONTS_DIR;
-  global $margin_left, $margin_right, $margin_top, $margin_bottom;
-  global $fontface1, $fontcolor1, $fontsize1, $xalign1, $yalign1, $text1;
-  global $fontface2, $fontcolor2, $fontsize2, $xalign2, $yalign2, $text2;
-  global $fontface3, $fontcolor3, $fontsize3, $xalign3, $yalign3, $text3;
+for ($N = 1; $N <= $ntext; $N++) {
+  $text = isset($_GET["t$N"]) ? $_GET["t$N"] : "";
   $fontface = ${"fontface$N"};
   $fontcolor = ${"fontcolor$N"};
   $fontsize = intval(${"fontsize$N"});
   $xalign = ${"xalign$N"};
   $yalign = ${"yalign$N"};
-  $text = ${"text$N"};
 
   # Fix white space in text.
   $text = preg_replace("/\r/", "", $text);
+  if (!$text || !$fontface || !$fontsize) {
+    continue;
+  }
 
   # Validate font color, derive supporting colors.
   if (!preg_match('#[a-z0-9]{6}#i', $fontcolor)) $fontcolor = 'FFFFFF';  # default white
@@ -126,9 +103,16 @@ function textoverlay($N, $image_p, $image_width, $image_height) {
   $y += $fontsize; # fudge adjustment for truetype margin
 
   # Render slight SE shadow to stand out.
-  imagettftext($image_p, $fontsize, 0, $x - 1, $y, $fscolor, $font, $text);
+  imagettftext($image_p, $fontsize, 0, $x + 1, $y, $fscolor, $font, $text);
   imagettftext($image_p, $fontsize, 0, $x, $y - 1, $fcolor, $font, $text);
-} // end textoverlay function
+}
+
+# Respond with a JPEG file, regardless of the base image format.
+$jpegcompress = 75; # (range of 50 - 95 recommended)
+header("Content-type: image/jpeg");
+imagejpeg($image_p, NULL, $jpegcompress);
+imagedestroy($im);
+exit;
 
 /*
  Write error into an image.

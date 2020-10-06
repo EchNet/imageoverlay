@@ -59,54 +59,61 @@
       </a>
     </div>
     <form method="POST">
-      <div class="flexwrap">
+      <h4>Margins</h4>
+      <div style="display: flex;">
         <div class="formField">
-          <label>Left Margin:</label>
+          <label>Left:</label>
           <input type="number" name="margin_left" value="<?php echo $margin_left ?>" size="20" class="form-control" placeholder="Left Margin"/>
         </div>
         <div class="formField">
-          <label>Right Margin:</label>
+          <label>Right:</label>
           <input type="number" name="margin_right" value="<?php echo $margin_right ?>" size="20" class="form-control" placeholder="Right Margin"/>
         </div>
         <div class="formField">
-          <label>Top Margin:</label>
+          <label>Top:</label>
           <input type="number" name="margin_top" value="<?php echo $margin_top ?>" size="20" class="form-control" placeholder="Top Margin"/>
         </div>
         <div class="formField">
-          <label>Bottom Margin:</label>
+          <label>Bottom:</label>
           <input type="number" name="margin_bottom" value="<?php echo $margin_bottom ?>" size="20" class="form-control" placeholder="Bottom Margin"/>
         </div>
       </div>
       <?php
         for ($t = 1; $t <= $ntext; $t++) {
           echo '<h4>Text Area #' . $t . '</h4>';
-          echo '<div class="flexwrap">';
+          echo '<div style="display: flex;">';
           $fieldname = "fontface" . $t;
           echo '<div class="formField">';
           echo '<label>Font Face:</label>';
-          echo '<input type="text" name="fontface' . $t . '" value="' . $$fieldname . '" size="20" class="form-control" placeholder="Font Face"/>';
+          echo '<input type="text" name="fontface' . $t . '" value="' . $$fieldname . '" size="15" class="form-control" placeholder="Font Face"/>';
           echo '</div>';
           $fieldname = "fontcolor" . $t;
           echo '<div class="formField">';
-          echo '<label>Text Color:</label>';
-          echo '<input type="text" name="fontcolor' . $t . '" value="' . $$fieldname . '" size="20" class="jscolor form-control" placeholder="Text Color"/>';
+          echo '<label>Color:</label>';
+          echo '<input type="text" name="fontcolor' . $t . '" value="' . $$fieldname . '" size="15" class="jscolor form-control" placeholder="Text Color"/>';
           echo '</div>';
           $fieldname = "fontsize" . $t;
           echo '<div class="formField">';
-          echo '<label>Font Size:</label>';
+          echo '<label>Size:</label>';
           echo '<input type="number" name="fontsize' . $t . '" value="' . $$fieldname . '" size="20" class="form-control" min="8" max="100"/>';
           echo '</div>';
-          echo '</div>';
-          echo '<div class="flexwrap">';
           $fieldname = "xalign" . $t;
           echo '<div class="formField">';
-          echo '<label>Horizontal Alignment:</label>';
-          echo '<input type="text" name="xalign' . $t . '" value="' . $$fieldname . '" size="20" class="form-control" placeholder="left, center, or right"/>';
+          echo '<label>X-Align:</label>';
+          echo '<select name="xalign' . $t . '" class="form-control">';
+          echo '<option ' . ($$fieldname == 'left' ? "selected" : "") . '>left</option>';
+          echo '<option ' . ($$fieldname == 'center' ? "selected" : "") . '>center</option>';
+          echo '<option ' . ($$fieldname == 'right' ? "selected" : "") . '>right</option>';
+          echo '</select>';
           echo '</div>';
           $fieldname = "yalign" . $t;
           echo '<div class="formField">';
-          echo '<label>Vertical Alignment:</label>';
-          echo '<input type="text" name="yalign' . $t . '" value="' . $$fieldname . '" size="20" class="form-control" placeholder="top, center, or bottom"/>';
+          echo '<label>Y-Align:</label>';
+          echo '<select name="yalign' . $t . '" class="form-control">';
+          echo '<option ' . ($$fieldname == 'top' ? "selected" : "") . '>top</option>';
+          echo '<option ' . ($$fieldname == 'center' ? "selected" : "") . '>center</option>';
+          echo '<option ' . ($$fieldname == 'bottom' ? "selected" : "") . '>bottom</option>';
+          echo '</select>';
           echo '</div>';
           echo '</div>';
         }

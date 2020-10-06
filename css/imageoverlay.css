@@ -70,3 +70,6 @@ img.preview {
   object-position: 50% 50%;
   object-fit: cover;
 }
+input[type="number"] {
+  min-width: 70px;
+}
