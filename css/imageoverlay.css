@@ -5,12 +5,13 @@ html, body, div {
 body {
   background-color: #ddd;
 }
-h2 i {
-  color: #048;
-}
 h2 {
   text-align: center;
   color: #444;
+  margin-bottom: 20px;
+}
+h2 i {
+  color: #048;
 }
 label {
   font-weight: normal;
