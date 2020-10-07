@@ -54,8 +54,8 @@
   <div class="content">
     <h2><i>Image Overlay</i> - <a href="..">Templates</a> - <?php echo $template_name ?></h2>
     <div class="imageContainer">
-      <a href="../image.php/<?php echo $template_name ?>?t1=0123456789&t2=XXXX&t3=YYYY" target="fullsize">
-        <img class="preview" src="../image.php/<?php echo $template_name ?>?t1=0123456789&t2=XXXX&t3=YYYY" />
+      <a href="../image.php/<?php echo $template_name ?>?t1=0123456789&t2=XXXX&t3=YYYY&_=<?php echo rand() ?>" target="fullsize">
+        <img class="preview" src="../image.php/<?php echo $template_name ?>?t1=0123456789&t2=XXXX&t3=YYYY&_=<?php echo rand() ?>" />
       </a>
     </div>
     <form method="POST">

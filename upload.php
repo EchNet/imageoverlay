@@ -5,6 +5,7 @@
   // Get parameters.
   $extension = ".jpg";
   $target_fname = basename($_FILES["file"]["name"]);
+  $template_name = basename($target_fname, $extension);
   $target_path = "images/" . $target_fname;
   $temp_path = $_FILES["file"]["tmp_name"];
 
@@ -12,7 +13,7 @@
   $success = false;
   $error_message = "";
   if (!$temp_path) {
-    $error_message = "That file is too large.";
+    $error_message = "The file may be too large or the file system is full.";
   }
   else if (substr($target_fname, -4) !== $extension) {
     $error_message = "File name extension must be " . $extension . " (case sensitive).";
@@ -24,7 +25,7 @@
     // File operation failed.
   }
   else {
-    echo '<meta http-equiv="refresh" content="0; url=templatemanager.php"/>';
+    echo '<meta http-equiv="refresh" content="0; url=templatemanager.php?open=' . $template_name . '"/>';
     $success = true;
   }
 ?>
